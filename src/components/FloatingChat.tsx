@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChatIcon, CloseIcon, SendIcon } from './icons'
+import { SOCIAL_LINKS } from '../config'
+import { ChatIcon, CloseIcon, SendIcon, TelegramIcon } from './icons'
 
 interface Message {
   from: 'bot' | 'user'
   text: string
 }
+
+const TELEGRAM = SOCIAL_LINKS.find((s) => s.key === 'telegram')?.href
 
 const QUICK_REPLIES = [
   'Mentorship prices',
@@ -14,7 +17,42 @@ const QUICK_REPLIES = [
 ]
 
 const BOT_REPLY =
-  'Thanks for reaching out! For details, contact us on Telegram or check the FAQs on the homepage.'
+  'For details, contact us on Telegram or check the FAQs on the homepage.'
+
+const KEYWORD_REPLIES: { match: RegExp; reply: string }[] = [
+  {
+    match: /price|cost|fee|pay|nair|mentorship/i,
+    reply:
+      'Mentorship pricing:\n\n• One-on-One — ₦500,000\n• 3-Month — ₦200,000\n• Community Standard — ₦10,000 (Free tier available)\n• 6-Month — ₦500,000\n\nUpgrade from the Mentorship section or your Dashboard.',
+  },
+  {
+    match: /signal/i,
+    reply:
+      'The Signal Room shares trade setups with clear entries, stops, and targets. It is included with your mentorship track — unlock it from your Dashboard.',
+  },
+  {
+    match: /copy|trade/i,
+    reply:
+      'We teach price action and risk management. You can copy the trades you learn in the Signal Room with your own broker. We do not execute trades on your behalf.',
+  },
+  {
+    match: /course|free|learn/i,
+    reply:
+      'The Free Community track is unlocked as soon as you create an account — head to your Dashboard to get started.',
+  },
+  {
+    match: /tutor|coach|1-1|one-on-one/i,
+    reply:
+      'One-on-One mentorship is ₦500,000 and gives you dedicated private sessions tailored to your pace and goals.',
+  },
+]
+
+function botAnswer(text: string): string {
+  for (const rule of KEYWORD_REPLIES) {
+    if (rule.match.test(text)) return rule.reply
+  }
+  return BOT_REPLY
+}
 
 export default function FloatingChat() {
   const [open, setOpen] = useState(false)
@@ -39,12 +77,12 @@ export default function FloatingChat() {
     if (!value) return
     setMessages((prev) => [...prev, { from: 'user', text: value }])
     setInput('')
-    window.setTimeout(() => pushBot(BOT_REPLY), 450)
+    window.setTimeout(() => pushBot(botAnswer(value)), 450)
   }
 
   const handleQuick = (reply: string) => {
     setMessages((prev) => [...prev, { from: 'user', text: reply }])
-    window.setTimeout(() => pushBot(BOT_REPLY), 450)
+    window.setTimeout(() => pushBot(botAnswer(reply)), 450)
   }
 
   return (
@@ -56,6 +94,18 @@ export default function FloatingChat() {
               <span className="chat-dot" aria-hidden="true" />
               EnexTrade Support
             </div>
+            {TELEGRAM && (
+              <a
+                className="chat-telegram"
+                href={TELEGRAM}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Chat with us on Telegram"
+                aria-label="Chat with us on Telegram"
+              >
+                <TelegramIcon width={18} height={18} />
+              </a>
+            )}
             <button
               className="chat-close"
               type="button"
@@ -81,6 +131,17 @@ export default function FloatingChat() {
               </button>
             ))}
           </div>
+
+          {TELEGRAM && (
+            <a
+              className="chat-human"
+              href={TELEGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Prefer a human? Chat with us on Telegram →
+            </a>
+          )}
 
           <form
             className="chat-input"

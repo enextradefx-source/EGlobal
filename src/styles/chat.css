@@ -82,6 +82,31 @@
   cursor: pointer;
 }
 
+.chat-telegram {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--accent);
+  transition: background-color var(--transition);
+}
+
+.chat-telegram:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.chat-human {
+  display: block;
+  padding: 4px 14px 2px;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.chat-human:hover {
+  color: var(--accent);
+}
+
 .chat-close:hover {
   background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--accent);
