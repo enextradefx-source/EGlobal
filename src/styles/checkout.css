@@ -1,0 +1,252 @@
+.checkout-page {
+  background-color: var(--bg);
+}
+
+.checkout-main {
+  place-items: start center;
+  padding-block: 40px 80px;
+}
+
+.checkout-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.checkout-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.checkout-step-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.checkout-step:not(:last-child)::after {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--border);
+}
+
+.checkout-step.is-active {
+  color: var(--accent);
+}
+
+.checkout-step.is-active .checkout-step-dot {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow);
+}
+
+.checkout-step.is-complete {
+  color: var(--accent);
+}
+
+.checkout-step.is-complete .checkout-step-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  align-items: start;
+}
+
+.checkout-card {
+  padding: 36px 32px;
+}
+
+.checkout-plans {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.checkout-plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.checkout-plan:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.checkout-plan.is-selected {
+  border-color: var(--accent);
+  box-shadow: var(--glow);
+}
+
+.checkout-plan-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.checkout-plan-price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.checkout-next {
+  width: 100%;
+}
+
+.checkout-next:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.checkout-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.checkout-note {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  text-align: center;
+  margin: 4px 0 0;
+}
+
+.checkout-paystack {
+  background: #04a8e0;
+}
+
+.checkout-paystack:hover {
+  background: #0390c1;
+}
+
+.checkout-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 18px;
+  color: var(--text-faint);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.checkout-divider::before,
+.checkout-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.checkout-summary {
+  padding: 28px 24px;
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+.summary-row span:last-child {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+}
+
+.summary-total {
+  border-bottom: none;
+  font-size: 1.05rem;
+  padding-top: 16px;
+}
+
+.summary-total span:last-child {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+}
+
+.summary-note {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-steps {
+    gap: 4px;
+  }
+
+  .checkout-step-label {
+    display: none;
+  }
+
+  .checkout-step:not(:last-child)::after {
+    width: 14px;
+  }
+
+  .checkout-card {
+    padding: 26px 20px;
+  }
+
+  .checkout-row {
+    grid-template-columns: 1fr;
+  }
+}

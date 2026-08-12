@@ -1,0 +1,156 @@
+.fac-page {
+  background-color: var(--bg);
+}
+
+.fac-main {
+  padding-block: 32px 80px;
+}
+
+.fac-hero {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: center;
+  padding: 40px 36px;
+  margin-bottom: 28px;
+}
+
+.fac-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 2.1rem;
+  color: var(--forest);
+  background: linear-gradient(135deg, var(--lime), var(--accent));
+  box-shadow: var(--glow);
+  border: 4px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.fac-name {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin-bottom: 6px;
+}
+
+.fac-role {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.fac-bio {
+  color: var(--text-soft);
+  max-width: 640px;
+}
+
+.fac-socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.fac-cta {
+  white-space: nowrap;
+}
+
+.fac-sections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.fac-section {
+  padding: 30px 26px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.fac-section:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.fac-section-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.fac-section-title {
+  font-size: 1.2rem;
+}
+
+.fac-section-body {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.fac-section-points {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.fac-section-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.fac-section-points svg {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.fac-footer-cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+@media (max-width: 960px) {
+  .fac-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .fac-avatar {
+    margin-inline: auto;
+  }
+
+  .fac-socials {
+    justify-content: center;
+  }
+
+  .fac-cta {
+    justify-self: center;
+  }
+
+  .fac-sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .fac-hero {
+    padding: 28px 20px;
+  }
+}

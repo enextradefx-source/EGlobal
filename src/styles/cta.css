@@ -1,0 +1,67 @@
+.cta-band {
+  padding-block: 100px;
+}
+
+.cta-card {
+  text-align: center;
+  padding: 72px 40px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 18%, var(--surface)),
+    var(--surface)
+  );
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  top: -140px;
+  left: -120px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 30%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-title {
+  font-size: clamp(1.8rem, 4.4vw, 2.8rem);
+  margin-bottom: 14px;
+}
+
+.cta-copy {
+  color: var(--text-soft);
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+@media (max-width: 620px) {
+  .cta-card {
+    padding: 52px 24px;
+  }
+}
+
+@media (max-width: 380px) {
+  .cta-card {
+    padding: 40px 16px;
+  }
+
+  .cta-actions {
+    gap: 10px;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
