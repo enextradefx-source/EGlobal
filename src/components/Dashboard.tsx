@@ -1,10 +1,13 @@
 import { useAuth } from '../auth/AuthContext'
 import { isTrackUnlocked } from '../lib/auth'
+import { formatBytes, resourcesForTrack } from '../lib/resources'
 import { TRACKS } from '../mentorshipData'
 import { useTheme } from '../theme/ThemeContext'
 import { LOGIN_LINK, SIGNUP_LINK } from '../config'
 import {
   ArrowRightIcon,
+  DownloadIcon,
+  FilesIcon,
   GridIcon,
   LockIcon,
   LogoutIcon,
@@ -12,6 +15,32 @@ import {
   SunIcon,
   UnlockIcon,
 } from './icons'
+
+function TrackResources({ trackId }: { trackId: string }) {
+  const files = resourcesForTrack(trackId)
+  if (files.length === 0) return null
+  return (
+    <div className="dash-resources">
+      <p className="dash-resources-label">
+        <FilesIcon width={14} height={14} />
+        Materials ({files.length})
+      </p>
+      <ul className="dash-resources-list">
+        {files.map((f) => (
+          <li key={f.id}>
+            <a href={f.dataUrl} download={f.name} title={f.name}>
+              <span className="dash-resource-name">{f.name}</span>
+              <span className="dash-resource-meta">
+                {formatBytes(f.size)}
+                <DownloadIcon width={14} height={14} />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 function DashLogo() {
   return (
@@ -150,13 +179,16 @@ export default function Dashboard() {
                     {t.price ?? t.levels?.[0]?.price ?? ''}
                   </div>
                   {unlocked ? (
-                    <a
-                      className="btn btn-primary"
-                      href={t.id === 'community' ? '#/dashboard' : '#/'}
-                    >
-                      <UnlockIcon width={15} height={15} />
-                      {t.id === 'community' ? 'Open Community' : 'Start Learning'}
-                    </a>
+                    <>
+                      <TrackResources trackId={t.id} />
+                      <a
+                        className="btn btn-primary"
+                        href={t.id === 'community' ? '#/dashboard' : '#/'}
+                      >
+                        <UnlockIcon width={15} height={15} />
+                        {t.id === 'community' ? 'Open Community' : 'Start Learning'}
+                      </a>
+                    </>
                   ) : (
                     <a className="btn btn-outline" href={`#/checkout/${t.id}`}>
                       <LockIcon width={15} height={15} />

@@ -92,16 +92,17 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} EnexTrade Global Markets. All rights reserved.</p>
-          <div className="footer-legal">
-            {LEGAL.map((l) => (
-              <a key={l.label} href={l.href}>
-                {l.label}
-              </a>
-            ))}
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} EnexTrade Global Markets. All rights reserved.</p>
+            <div className="footer-legal">
+              <a href="#/admin">Admin</a>
+              {LEGAL.map((l) => (
+                <a key={l.label} href={l.href}>
+                  {l.label}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
       </div>
     </footer>
   )

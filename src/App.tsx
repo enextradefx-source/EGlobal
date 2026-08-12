@@ -16,6 +16,7 @@ import Signup from './components/Signup'
 import Checkout from './components/Checkout'
 import Dashboard from './components/Dashboard'
 import FacilitatorPage from './components/FacilitatorPage'
+import Admin from './components/Admin'
 import FloatingChat from './components/FloatingChat'
 import './styles/navbar.css'
 import './styles/hero.css'
@@ -32,12 +33,14 @@ import './styles/chat.css'
 import './styles/checkout.css'
 import './styles/dashboard.css'
 import './styles/facilitator.css'
+import './styles/admin.css'
 
 type Route =
   | 'home'
   | 'login'
   | 'signup'
   | 'dashboard'
+  | 'admin'
   | { checkout: string }
   | { facilitator: string }
 
@@ -46,6 +49,7 @@ function routeFromHash(): Route {
   if (hash === '#/login') return 'login'
   if (hash === '#/signup') return 'signup'
   if (hash === '#/dashboard') return 'dashboard'
+  if (hash === '#/admin') return 'admin'
   if (hash.startsWith('#/checkout/')) {
     return { checkout: hash.slice('#/checkout/'.length) }
   }
@@ -75,6 +79,8 @@ export default function App() {
           )
         ) : route === 'dashboard' ? (
           <Dashboard />
+        ) : route === 'admin' ? (
+          <Admin />
         ) : typeof route === 'object' && 'checkout' in route ? (
           <Checkout trackId={route.checkout} />
         ) : typeof route === 'object' ? (

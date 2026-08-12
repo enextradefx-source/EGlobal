@@ -1,5 +1,6 @@
 const SESSION_KEY = 'enex-session'
 const USERS_KEY = 'enex-users'
+const ADMIN_SESSION_KEY = 'enex-admin-session'
 
 export type Plan = 'free' | 'standard' | 'paid'
 
@@ -125,4 +126,42 @@ export function isTrackUnlocked(user: UserRecord | null, trackId: string) {
   if (!user) return false
   if (trackId === 'community') return true
   return user.unlocked.includes(trackId)
+}
+
+export function adminLogin(
+  email: string,
+  password: string,
+  adminEmail: string,
+  adminPassword: string,
+): boolean {
+  const ok =
+    email.trim().toLowerCase() === adminEmail.toLowerCase() &&
+    password === adminPassword
+  if (ok) {
+    try {
+      localStorage.setItem(
+        ADMIN_SESSION_KEY,
+        JSON.stringify({ email, loggedInAt: Date.now() }),
+      )
+    } catch {
+      /* storage unavailable */
+    }
+  }
+  return ok
+}
+
+export function isAdmin(): boolean {
+  try {
+    return Boolean(localStorage.getItem(ADMIN_SESSION_KEY))
+  } catch {
+    return false
+  }
+}
+
+export function adminLogout() {
+  try {
+    localStorage.removeItem(ADMIN_SESSION_KEY)
+  } catch {
+    /* storage unavailable */
+  }
 }

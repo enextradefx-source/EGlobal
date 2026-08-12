@@ -35,6 +35,10 @@ export const PAYSTACK_PUBLIC_KEY = read(
   'pk_test_xxxxxxxxxxxxxxxxxxxxx',
 )
 
+export const ADMIN_EMAIL = read('VITE_ADMIN_EMAIL', 'admin@enex.global')
+
+export const ADMIN_PASSWORD = read('VITE_ADMIN_PASSWORD', 'enex-admin')
+
 export const TERMS_LINK = read('VITE_TERMS_LINK', '#terms')
 
 export const PRIVACY_LINK = read('VITE_PRIVACY_LINK', '#privacy')
