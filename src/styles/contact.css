@@ -1,0 +1,124 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: start;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.contact-card {
+  padding: 32px 36px;
+}
+
+.contact-card textarea {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.contact-card textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--glow);
+}
+
+.contact-card textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.contact-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info {
+  padding: 24px;
+}
+
+.contact-info h3 {
+  font-size: 1.02rem;
+  margin-bottom: 16px;
+}
+
+.contact-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-info li a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.86rem;
+  color: var(--text-soft);
+  word-break: break-all;
+}
+
+.contact-info li a:hover {
+  color: var(--accent);
+}
+
+.contact-info-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.contact-success-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.contact-success h3 {
+  font-size: 1.25rem;
+}
+
+.contact-success p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  max-width: 420px;
+}
+
+.contact-reset {
+  margin-top: 4px;
+}
+
+@media (max-width: 800px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 26px 24px;
+  }
+}

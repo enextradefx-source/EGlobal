@@ -39,6 +39,10 @@ export const ADMIN_EMAIL = read('VITE_ADMIN_EMAIL', 'admin@enex.global')
 
 export const ADMIN_PASSWORD = read('VITE_ADMIN_PASSWORD', 'enex-admin')
 
+export const CONTACT_EMAIL = read('VITE_CONTACT_EMAIL', 'hello@enex.global')
+
+export const TELEGRAM_LINK = read('VITE_SOCIAL_TELEGRAM', 'https://t.me/')
+
 export const TERMS_LINK = read('VITE_TERMS_LINK', '#terms')
 
 export const PRIVACY_LINK = read('VITE_PRIVACY_LINK', '#privacy')

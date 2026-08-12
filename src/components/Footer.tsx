@@ -9,7 +9,7 @@ const LEGAL = [
 
 export default function Footer() {
   return (
-    <footer className="footer" id="contact">
+    <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">

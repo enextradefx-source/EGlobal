@@ -10,6 +10,7 @@ import Team from './components/Team'
 import HowItWorks from './components/HowItWorks'
 import Faq from './components/Faq'
 import CtaBand from './components/CtaBand'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Signup from './components/Signup'
@@ -34,6 +35,7 @@ import './styles/checkout.css'
 import './styles/dashboard.css'
 import './styles/facilitator.css'
 import './styles/admin.css'
+import './styles/contact.css'
 
 type Route =
   | 'home'
@@ -97,6 +99,7 @@ export default function App() {
               <HowItWorks />
               <Faq />
               <CtaBand />
+              <Contact />
             </main>
             <Footer />
           </>
