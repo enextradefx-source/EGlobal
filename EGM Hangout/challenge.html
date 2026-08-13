@@ -6,7 +6,7 @@
   <title>EnexTraders Hangout Challenge — Simple tasks. Big prize.</title>
   <meta name="description" content="The EnexTraders Hangout Challenge — two weeks of simple crew tasks: make a video, post a review, win game night, take the trading battle. Best curated experience wins $200." />
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -47,7 +47,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta whatsapp-btn">Enter the challenge</a>
+      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta whatsapp-btn" data-group="challenge">Enter the challenge</a>
       <button class="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -67,7 +67,7 @@
             energy and the best curated experience takes home <strong>$200</strong>.
           </p>
           <div class="hero-actions">
-            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-primary whatsapp-btn">Enter the challenge</a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-primary whatsapp-btn" data-group="challenge">Enter the challenge</a>
             <a href="#prize" class="btn btn-ghost">See the prizes</a>
           </div>
           <div class="hero-stats">
@@ -249,7 +249,7 @@
             Drop your details and we'll add you to the challenge group — task
             list, deadlines, and everything else lands there. See you at kickoff.
           </p>
-          <form class="join-form" id="join-form">
+          <form class="join-form" id="join-form" data-group="challenge">
             <input type="text" name="name" placeholder="Your name" required />
             <input type="tel" name="phone" placeholder="Phone or WhatsApp" required />
             <button type="submit" class="btn btn-primary">Enter the challenge</button>
@@ -323,7 +323,7 @@
         <div class="footer-col">
           <h4>Community</h4>
           <ul>
-            <li><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">Join the Hangout</a></li>
+            <li><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" data-group="challenge">Join the Hangout</a></li>
             <li><a href="challenge.html#enter">Enter the Challenge</a></li>
             <li><a href="index.html#crew">Meet the Crew</a></li>
             <li><a href="index.html#about">FAQ</a></li>
@@ -356,6 +356,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

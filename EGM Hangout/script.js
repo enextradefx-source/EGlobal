@@ -1,15 +1,18 @@
-// TODO: replace with your real WhatsApp number (country code, digits only).
-const WHATSAPP_NUMBER = "2348106236496";
+// TODO: replace with your real Google Form link for the waitlist.
+const WAITLIST_FORM_URL = "https://forms.gle/sQPNftV2rKq96rYe9";
 
-const waLink = (text) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+const WAITLIST_GROUP_URL =
+  "https://chat.whatsapp.com/JrF7ko9Prk76uIxvoEWKLt?s=cl&p=a&ilr=1";
 
-const WHATSAPP_LINK = waLink(
-  "Hi EnexTraders, I'd love to join the crew!"
-);
+const CHALLENGE_GROUP_URL =
+  "https://chat.whatsapp.com/HNT8qIAmkxK8L7c0pRUpgo?s=cl&p=a&ilr=1";
 
 document.querySelectorAll(".whatsapp-btn").forEach((btn) => {
-  btn.href = WHATSAPP_LINK;
+  btn.href = btn.dataset.group === "challenge" ? CHALLENGE_GROUP_URL : WAITLIST_GROUP_URL;
+});
+
+document.querySelectorAll(".waitlist-btn").forEach((btn) => {
+  btn.href = WAITLIST_FORM_URL;
 });
 
 const nav = document.querySelector(".nav");
@@ -63,14 +66,24 @@ document.querySelectorAll(".section").forEach((section) => {
 
 const form = document.getElementById("join-form");
 const note = document.getElementById("form-note");
+const joinCheck = document.getElementById("join-check");
+const joinSubmit = document.getElementById("join-submit");
+
+if (joinCheck && joinSubmit) {
+  joinCheck.addEventListener("change", () => {
+    joinSubmit.disabled = !joinCheck.checked;
+  });
+}
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (joinCheck && !joinCheck.checked) return;
   const name = form.name.value.trim();
   const phone = form.phone.value.trim();
   if (!name || !phone) return;
-  const message = `Hi EnexTraders! I'm ${name} (${phone}). I'd love to join the crew.`;
-  window.open(waLink(message), "_blank");
+  const group =
+    form.dataset.group === "challenge" ? CHALLENGE_GROUP_URL : WAITLIST_GROUP_URL;
+  window.open(group, "_blank");
   form.hidden = true;
   note.hidden = false;
 });
