@@ -1,5 +1,5 @@
 // TODO: replace with your real Google Form link for the waitlist.
-const WAITLIST_FORM_URL = "https://forms.gle/sQPNftV2rKq96rYe9";
+const WAITLIST_FORM_URL = "https://forms.gle/CGsfLYrf31bKrvVH9";
 
 const WAITLIST_GROUP_URL =
   "https://chat.whatsapp.com/JrF7ko9Prk76uIxvoEWKLt?s=cl&p=a&ilr=1";
