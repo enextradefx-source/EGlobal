@@ -31,6 +31,10 @@ jobs:
         env:
           VITE_BASE_PATH: /EGlobal/
         run: npm run build
+      - name: Copy Hangout site to Pages output
+        run: |
+          mkdir -p dist/hangout
+          cp -r "EGM Hangout/." dist/hangout/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
